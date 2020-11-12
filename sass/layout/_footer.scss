@@ -1,0 +1,69 @@
+.footer {
+    width: 100%;
+    background-color: $color-off-white;
+    padding: 3rem 0;
+    position: relative;
+    bottom: 0;
+
+
+    &__logo {
+        height: 4rem;
+    }
+
+
+    &__input {
+        width: 100%;
+        font-size: 1rem;
+        font-family: inherit;
+        color: inherit;
+        padding: 1rem 1rem;
+        border-radius: 5px;
+        background-color: rgba($color-white, .5);
+        border: none;
+        border-bottom: 3px solid transparent;
+        width: 90%;
+        display: block;
+        transition: all .3s;
+
+        @include respond(tab-port) {
+            width: 100%;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: 3px solid $color-primary;
+        }
+
+        &:focus:invalid {
+            border-bottom: 3px solid $color-secondary;
+        }
+
+    }
+
+    &__nav-list {
+        list-style-type: none;
+    }
+    &__nav-item {
+
+    }
+    &__nav-link {
+        &:link,
+        &:visited {
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 400;
+            padding: .5rem .5rem;
+            color: $color-grey-dark;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all .4s;
+        }
+
+        &:hover,
+        &:active {
+            color: $color-primary;
+            transform: translateY(-.2rem);
+        }
+    }
+}

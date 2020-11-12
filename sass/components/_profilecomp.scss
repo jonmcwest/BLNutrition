@@ -1,0 +1,47 @@
+.composition {
+
+    width: 60%;
+    position: relative;
+    left: 40%;
+
+
+
+    &__img {
+
+        width: 100%;
+        position: relative;
+    }
+
+    &__veg {
+
+   
+        position: absolute;
+
+        &-1 {
+            width: 8rem;
+            left: -4rem;
+            bottom: -10rem;
+            transform: rotate(-20deg);
+        }
+
+        &-2 {
+            width: 20rem;
+            left: -4rem;
+            top: -11rem;
+
+        }
+
+        &-3 {
+            width: 15rem;
+            right: 0rem;
+            bottom: -13rem;
+            transform: rotate(90deg);
+        }
+
+        &-4 {
+            width: 42rem;
+            left: -13rem;
+            bottom: -8rem;
+        }
+    }
+}

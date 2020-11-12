@@ -1,0 +1,64 @@
+.navigation {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 8rem;
+    background-color: $color-white;
+    box-shadow: 0 .3rem 1rem rgba($color: #000000, $alpha: .1);
+
+    &__logo-box {
+        height: 50%;
+        position: absolute;
+        top: 50%;
+        left: 7rem;
+        transform: translateY(-50%);
+    }
+
+    &__logo {
+        height: 100%;
+    }
+
+    &__list {
+        position: absolute;
+        top: 50%;
+        right: 7rem;
+        transform: translateY(-50%);
+    }
+
+    &__item {
+        display: inline-block;
+        text-align: center;
+        
+
+        &:not(:last-child) {
+            margin-right: 3rem;
+        }
+
+    }
+
+    &__link {
+
+        &:link,
+        &:visited {
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 400;
+            padding: .5rem .5rem;
+            color: $color-grey-dark;
+            text-decoration: none;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            background-size: 240%;
+            border-radius: 10px;
+            transition: all .4s;
+        }
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: $color-primary;
+            transform: translateY(-.2rem);
+        }
+
+    }
+
+}

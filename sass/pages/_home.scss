@@ -1,0 +1,37 @@
+.section-header {
+    position: relative;
+}
+
+.section-about  {
+    padding: 15rem;
+    height: 110vh;
+    width: 100%;
+    position: relative;
+
+    &__content {
+        width: 30rem;
+        position: absolute;
+        top: 25%;
+    }
+}
+
+.section-slogan {
+    position: relative;
+    height: 60vh;
+    background-image: url('/img/2x/noblur-bg@2x.png');
+    background-size: 110%;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.section-latest-blog {
+    position: relative;
+    padding: 10rem 0;
+    height: 120vh;
+    text-align: center;
+}

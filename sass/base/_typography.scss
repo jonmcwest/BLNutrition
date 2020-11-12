@@ -1,0 +1,51 @@
+body {
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    /*font-size: 16px;*/
+    line-height: 1.7;
+    color: $color-grey-dark;
+}
+
+.header-primary {
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: .6rem;
+    line-height: 7.5rem;
+}
+
+.header-secondary {
+    font-size: 1.8rem;
+    font-weight: 400;
+    letter-spacing: .2rem;
+    line-height: 7.5rem;
+}
+
+.header-tertiary {
+    font-weight: 400;
+    font-size: 1.4rem;
+    letter-spacing: .1rem;
+}
+
+.header-quaternary {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    font-weight: 400;
+}
+
+.text {
+    font-size: 1.1rem;
+    font-weight: 200;
+    color: $color-grey-medium;
+    letter-spacing: .1rem;
+}
+
+.span {
+
+    &--primary {
+        color: $color-primary;
+    }
+
+    &--secondary {
+        color: $color-secondary;
+    }
+}
