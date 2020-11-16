@@ -1,6 +1,6 @@
 .composition {
-    width: 40rem;
-    height: 40rem;
+    width: 30rem;
+    height: 30rem;
     position: relative;
 
     @include respond(tab-land) {
@@ -13,8 +13,8 @@
     }
 
     &__img {
-        width: 40rem;
-        max-width: 40rem;
+        width: 30rem;
+        max-width: 30rem;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -37,9 +37,9 @@
 
 
         &-1 {
-            top: 15rem;
+            top: 7rem;
             left: -7rem;
-            transform:  scale(.8) rotate(-60deg);
+            transform:  scale(.6) rotate(-60deg);
 
             @include respond(tab-land) {
                 transform:  scale(.6) rotate(-60deg);
@@ -62,7 +62,7 @@
 
 
             @include respond(tab-land) {
-                transform:  scale(.8);
+                transform:  scale(.5);
             }
 
             @include respond(phone) {
@@ -75,7 +75,7 @@
         &-3 {
             bottom: -25rem;
             right: -8rem;
-            transform: scale(.8) rotate(60deg);
+            transform: scale(.5) rotate(60deg);
 
 
             @include respond(tab-land) {
@@ -89,6 +89,15 @@
                 transform:  scale(.4) rotate(60deg);
                 bottom: -23rem;
             }
+
+        }
+
+        &-4 {
+            bottom: -10rem;
+            left: -8rem;
+            width: 40rem;
+
+
 
         }
 

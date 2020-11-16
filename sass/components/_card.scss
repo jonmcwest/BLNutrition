@@ -67,12 +67,41 @@
         text-align: left;
         position: relative;
 
+        @include respond(tab-port) {
+            width: 120%;
+            height: 25rem;
+        }
+
+        @include respond(phone) {
+            width: 120%;
+            height: 30rem;
+        }
+
         &-container {
             width: 33.333%;
             overflow: hidden;
 
+            @include respond(tab-land) {
+                width: 50%;
+            }
+
+
             &-img {
                 width: 100%;
+
+
+            @include respond(tab-land) {
+                width: 120%;
+            }
+
+
+            @include respond(tab-port) {
+                width: 130%;
+            }
+
+            @include respond(phone) {
+                width: 200%;
+            }
             }
         }
 
@@ -83,6 +112,11 @@
             position: absolute;
             right: 1rem;
             top: 0;
+
+
+            @include respond(tab-land) {
+                width: 40%;
+            }
         }
 
         &-readmore {

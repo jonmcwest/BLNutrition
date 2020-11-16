@@ -200,11 +200,31 @@ body {
   overflow: hidden;
   text-align: left;
   position: relative; }
+  @media only screen and (max-width: 56.25em) {
+    .blog--wide__card {
+      width: 120%;
+      height: 25rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .blog--wide__card {
+      width: 120%;
+      height: 30rem; } }
   .blog--wide__card-container {
     width: 33.333%;
     overflow: hidden; }
+    @media only screen and (max-width: 75em) {
+      .blog--wide__card-container {
+        width: 50%; } }
     .blog--wide__card-container-img {
       width: 100%; }
+      @media only screen and (max-width: 75em) {
+        .blog--wide__card-container-img {
+          width: 120%; } }
+      @media only screen and (max-width: 56.25em) {
+        .blog--wide__card-container-img {
+          width: 130%; } }
+      @media only screen and (max-width: 37.5em) {
+        .blog--wide__card-container-img {
+          width: 200%; } }
   .blog--wide__card-content {
     height: 80%;
     margin: 2rem;
@@ -212,6 +232,9 @@ body {
     position: absolute;
     right: 1rem;
     top: 0; }
+    @media only screen and (max-width: 75em) {
+      .blog--wide__card-content {
+        width: 40%; } }
   .blog--wide__card-readmore {
     position: absolute;
     right: 0;
@@ -234,8 +257,8 @@ body {
       box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.3); }
 
 .composition {
-  width: 40rem;
-  height: 40rem;
+  width: 30rem;
+  height: 30rem;
   position: relative; }
   @media only screen and (max-width: 75em) {
     .composition {
@@ -245,8 +268,8 @@ body {
     .composition {
       width: 25rem; } }
   .composition__img {
-    width: 40rem;
-    max-width: 40rem;
+    width: 30rem;
+    max-width: 30rem;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -262,9 +285,9 @@ body {
   .composition__veg {
     position: absolute; }
     .composition__veg-1 {
-      top: 15rem;
+      top: 7rem;
       left: -7rem;
-      transform: scale(0.8) rotate(-60deg); }
+      transform: scale(0.6) rotate(-60deg); }
       @media only screen and (max-width: 75em) {
         .composition__veg-1 {
           transform: scale(0.6) rotate(-60deg);
@@ -279,7 +302,7 @@ body {
       transform: scale(1); }
       @media only screen and (max-width: 75em) {
         .composition__veg-2 {
-          transform: scale(0.8); } }
+          transform: scale(0.5); } }
       @media only screen and (max-width: 37.5em) {
         .composition__veg-2 {
           transform: scale(0.5);
@@ -288,7 +311,7 @@ body {
     .composition__veg-3 {
       bottom: -25rem;
       right: -8rem;
-      transform: scale(0.8) rotate(60deg); }
+      transform: scale(0.5) rotate(60deg); }
       @media only screen and (max-width: 75em) {
         .composition__veg-3 {
           transform: scale(0.6) rotate(60deg);
@@ -298,6 +321,10 @@ body {
         .composition__veg-3 {
           transform: scale(0.4) rotate(60deg);
           bottom: -23rem; } }
+    .composition__veg-4 {
+      bottom: -10rem;
+      left: -8rem;
+      width: 40rem; }
 
 .footer {
   width: 100%;
@@ -410,6 +437,8 @@ body {
     .header {
       background-size: 180%;
       height: 90rem; } }
+  .header--blog {
+    height: 70rem; }
   .header__content {
     position: absolute;
     width: 100%;
