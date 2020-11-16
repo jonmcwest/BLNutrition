@@ -277,6 +277,9 @@ body {
       top: -15rem;
       left: -5rem;
       transform: scale(1); }
+      @media only screen and (max-width: 75em) {
+        .composition__veg-2 {
+          transform: scale(0.8); } }
       @media only screen and (max-width: 37.5em) {
         .composition__veg-2 {
           transform: scale(0.5);
@@ -294,7 +297,7 @@ body {
       @media only screen and (max-width: 37.5em) {
         .composition__veg-3 {
           transform: scale(0.4) rotate(60deg);
-          bottom: -25rem; } }
+          bottom: -23rem; } }
 
 .footer {
   width: 100%;
@@ -302,6 +305,10 @@ body {
   padding: 3rem 0;
   position: relative;
   bottom: 0; }
+  @media only screen and (max-width: 56.25em) {
+    .footer {
+      text-align: center;
+      padding: 2rem 0 6rem 0; } }
   .footer__logo {
     height: 4rem; }
   .footer__input {
@@ -690,6 +697,11 @@ body {
   align-items: center;
   text-align: center;
   flex-direction: column; }
+  @media only screen and (max-width: 75em) {
+    .section-slogan {
+      background-size: 200%;
+      height: 100%;
+      padding: 6rem 0; } }
 
 .section-latest-blog {
   position: relative;

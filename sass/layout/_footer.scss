@@ -6,6 +6,12 @@
     bottom: 0;
 
 
+    @include respond(tab-port) {
+        text-align: center;
+        padding: 2rem 0 6rem 0;
+    }
+
+
 
     &__logo {
         height: 4rem;

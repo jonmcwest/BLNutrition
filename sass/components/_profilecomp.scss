@@ -61,6 +61,10 @@
             transform: scale(1);
 
 
+            @include respond(tab-land) {
+                transform:  scale(.8);
+            }
+
             @include respond(phone) {
                 transform:  scale(.5);
                 top: -12rem;
@@ -83,7 +87,7 @@
 
             @include respond(phone) {
                 transform:  scale(.4) rotate(60deg);
-                bottom: -25rem;
+                bottom: -23rem;
             }
 
         }
