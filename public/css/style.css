@@ -327,6 +327,9 @@ body {
       bottom: -10rem;
       left: -8rem;
       width: 40rem; }
+      @media only screen and (max-width: 37.5em) {
+        .composition__veg-4 {
+          width: 30rem; } }
 
 .footer {
   width: 100%;

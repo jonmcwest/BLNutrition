@@ -100,6 +100,9 @@
             width: 40rem;
 
 
+            @include respond(phone) {
+                width: 30rem;
+            }
 
         }
 
