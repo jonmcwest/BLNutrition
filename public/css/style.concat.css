@@ -358,8 +358,7 @@ body {
   .header__content {
     position: absolute;
     width: 100%;
-    top: 18rem;
-    z-index: 2; }
+    top: 18rem; }
   .header__img {
     width: 100%; }
 
@@ -411,6 +410,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center; }
+
+.post-image {
+  position: relative;
+  z-index: -2;
+  width: 100%;
+  filter: opacity(0.2); }
 
 .post__text {
   text-align: justify;

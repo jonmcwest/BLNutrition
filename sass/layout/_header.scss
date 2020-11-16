@@ -1,6 +1,6 @@
 .header {
     width: 100%;
-    height: 110vh;
+    height: 70rem;
     background-image: url('/img/2x/bg-img@2x.png');
     background-size: 110%;
     background-attachment: fixed;
@@ -8,13 +8,49 @@
     clip-path: url(#headerCurve);
     position: relative;
 
+    @include respond (tab-land) {
+        text-align: center;
+        height: 80rem;
+
+    }
+
+    @include respond (tab-port) {
+        text-align: center;
+        height: 100rem;
+        background-size: 150%;
+    }
+
+    @include respond (phone) {
+        background-size: 180%;
+        height: 90rem;
+    }
+
+
+
     &__content {
         position: absolute;
         width: 100%;
         top: 18rem;
+        padding: 0 10rem;
+
+        @include respond (tab-port) {
+            width: 100%;
+        }
+        @include respond (phone) {
+            transform: scale(0.8);
+            padding: 0;
+            margin-top: -10rem;
+        }
+    
     }
 
     &__img {
         width: 100%;
+
+        @include respond (tab-port) {
+            position: relative;
+            left: -4rem;
+        }
+    
     }
 }
