@@ -73,7 +73,7 @@
         }
 
         @include respond(phone) {
-            width: 120%;
+            width: 150%;
             height: 30rem;
         }
 
@@ -83,6 +83,11 @@
 
             @include respond(tab-land) {
                 width: 50%;
+            }
+
+            @include respond(phone) {
+                width: 30%;
+                height: 100%;
             }
 
 
@@ -117,6 +122,11 @@
             @include respond(tab-land) {
                 width: 40%;
             }
+
+            @include respond(phone) {
+                width: 55%;
+            }
+
         }
 
         &-readmore {

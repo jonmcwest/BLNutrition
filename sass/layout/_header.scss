@@ -24,6 +24,10 @@
         height: 90rem;
     }
 
+    &--post {
+        background-image: none;
+    }
+
     &--blog {
         height: 70rem;
     }
@@ -41,6 +45,11 @@
             transform: scale(0.8);
             padding: 0;
             margin-top: -10rem;
+        }
+
+        &--post {
+            background-color: rgba($color-white, .8);
+            padding: 2rem 2rem 4rem 2rem;
         }
     
     }
