@@ -102,6 +102,8 @@
 
             @include respond(phone) {
                 width: 30rem;
+                bottom: -5rem;
+                left: -10rem;
             }
 
         }
