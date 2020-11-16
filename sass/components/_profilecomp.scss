@@ -43,12 +43,12 @@
 
             @include respond(tab-land) {
                 transform:  scale(.6) rotate(-60deg);
-                top: 6rem;
+                top: 2rem;
             }
 
             @include respond(phone) {
                 transform:  scale(.4) rotate(-60deg);
-                top: 2rem;
+                top: -2rem;
             }   
 
 
@@ -63,11 +63,13 @@
 
             @include respond(tab-land) {
                 transform:  scale(.5);
+                top: -20rem;
+                left: -10rem;
             }
 
             @include respond(phone) {
                 transform:  scale(.5);
-                top: -12rem;
+                top: -16rem;
                 left: -10rem;
             }
         }
@@ -80,14 +82,14 @@
 
             @include respond(tab-land) {
                 transform:  scale(.6) rotate(60deg);
-                bottom: -20rem;
+                bottom: -25rem;
                 right: -15rem;
             }
 
 
             @include respond(phone) {
                 transform:  scale(.4) rotate(60deg);
-                bottom: -23rem;
+                bottom: -30rem;
             }
 
         }
