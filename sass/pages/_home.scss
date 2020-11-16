@@ -1,5 +1,7 @@
 .section-header {
     position: relative;
+
+    
 }
 
 .section-about  {
@@ -8,10 +10,61 @@
     width: 100%;
     position: relative;
 
+    @include respond(tab-land) {
+        height: 100rem;
+    }
+
+
+    &__container {
+        width: 100%;
+        height: 50rem;
+        position: relative;
+        display: flex;
+        padding: 0 10rem;
+        justify-content: center;
+        align-items: center;
+
+        @include respond(tab-land) {
+            flex-direction: column;
+            height: 80rem;
+            padding: 0;
+        }
+
+        &-left {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include respond(tab-land) {
+                width: 100%;
+            }
+        }
+
+        &-right {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include respond(tab-land) {
+                width: 150%;
+            }
+        }
+    }
+
+
+    @include respond(tab-land) {
+        display: flex;
+    }
+
     &__content {
         width: 30rem;
-        position: absolute;
-        top: 25%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }
 
@@ -32,6 +85,6 @@
 .section-latest-blog {
     position: relative;
     padding: 10rem 0;
-    height: 120vh;
+    height: 100%;
     text-align: center;
 }

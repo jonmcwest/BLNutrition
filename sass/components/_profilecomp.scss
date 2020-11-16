@@ -1,47 +1,92 @@
 .composition {
-
-    width: 60%;
+    width: 40rem;
+    height: 40rem;
     position: relative;
-    left: 40%;
 
+    @include respond(tab-land) {
+        flex-direction: column;
+        width: 30rem;
+    }
 
+    @include respond(tab-port) {
+        width: 25rem;
+    }
 
     &__img {
+        width: 40rem;
+        max-width: 40rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
 
-        width: 100%;
-        position: relative;
+        @include respond(tab-land) {
+            flex-direction: column;
+            width: 30rem;
+        }
+
+        @include respond(tab-port) {
+            flex-direction: column;
+            width: 25rem;
+        }
+    
     }
 
     &__veg {
-
-   
         position: absolute;
 
+
         &-1 {
-            width: 8rem;
-            left: -4rem;
-            bottom: -10rem;
-            transform: rotate(-20deg);
+            top: 15rem;
+            left: -7rem;
+            transform:  scale(.8) rotate(-60deg);
+
+            @include respond(tab-land) {
+                transform:  scale(.6) rotate(-60deg);
+                top: 6rem;
+            }
+
+            @include respond(phone) {
+                transform:  scale(.4) rotate(-60deg);
+                top: 2rem;
+            }   
+
+
         }
 
         &-2 {
-            width: 20rem;
-            left: -4rem;
-            top: -11rem;
+            top: -15rem;
+            left: -5rem;
 
+            transform: scale(1);
+
+
+            @include respond(phone) {
+                transform:  scale(.5);
+                top: -12rem;
+                left: -10rem;
+            }
         }
 
         &-3 {
-            width: 15rem;
-            right: 0rem;
-            bottom: -13rem;
-            transform: rotate(90deg);
+            bottom: -25rem;
+            right: -8rem;
+            transform: scale(.8) rotate(60deg);
+
+
+            @include respond(tab-land) {
+                transform:  scale(.6) rotate(60deg);
+                bottom: -20rem;
+                right: -15rem;
+            }
+
+
+            @include respond(phone) {
+                transform:  scale(.4) rotate(60deg);
+                bottom: -25rem;
+            }
+
         }
 
-        &-4 {
-            width: 42rem;
-            left: -13rem;
-            bottom: -8rem;
-        }
     }
 }
