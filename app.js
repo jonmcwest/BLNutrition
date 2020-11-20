@@ -1,12 +1,54 @@
-const express = require('express') 
-const bodyParser = require('body-parser')
+const express = require('express') ;
+const bodyParser = require('body-parser');
 const app = express();
-
+const mongo = require('mongodb');
+const mongoose= require('mongoose');
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({extended: true}));
+ app.use(bodyParser.urlencoded({
+    extended: true
+  }));
 
+
+//start of database functions
+
+mongoose.connect('mongodb://localhost:27017/BLnutrition', {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => {
+    console.log('Database connection open')
+})
+.catch(err => {
+    console.log('Whoopsie Database connection failed')
+    console.log(err);
+})
+
+const postSchema = new mongoose.Schema({
+    title: String,
+    body: String,
+})
+
+const Post = mongoose.model('Post', postSchema);
+
+
+
+
+app.route('/newpost')
+    .get(function(req,res){
+        res.render('newpost')
+    })
+    .post((req, res) => {
+       const newPost = new Post({title: req.body.postTitle, body: req.body.postBody});
+       newPost.save();
+       console.log('saved the following post:' + newPost);
+       res.redirect('/dashboard');
+    });
+
+app.route('/dashboard')
+    .get((req,res) => {
+        res.render('dashboard');
+    })
+
+//end of database functions
 
 app.get('/', function(req, res){
     res.render("index");

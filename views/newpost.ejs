@@ -8,16 +8,16 @@
 
         <h1>Compose</h1>
 
-        <form action="/compose" method="post" enctype="multipart/form-data">
+        <form action="/newpost" method="post">
         
             <div class="form-group u-margin-bottom-small">
-                <label for="title">Title</label>
-                <input id="title" class="form-control" type="text" name="postTitle">
+                <label for="postTitle">Title</label>
+                <input id="postTitle" class="form-control" type="text" name="postTitle">
                 <input type="file" name="image">
             </div>
             <div class="form-group">
-                <label for="post">Post</label>
-                <textarea id="post" name="postBody"  class="form-control" cols="40" rows="5"></textarea>
+                <label for="postBody">Post</label>
+                <textarea id="postBody" name="postBody" class="form-control" cols="40" rows="5"></textarea>
             </div>
             <button type="submit" class="section-compose__form-button">Publish</button>
         
