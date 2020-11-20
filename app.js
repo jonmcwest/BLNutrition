@@ -1,8 +1,12 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const mongo = require('mongodb');
 const mongoose = require('mongoose');
+const multer = require('multer');
+const { storage } = require('./cloudinary/index')
+const upload = multer({ storage })
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -28,7 +32,11 @@ mongoose.connect('mongodb://localhost:27017/BLnutrition', {
 const postSchema = new mongoose.Schema({
     title: String,
     body: String,
-    date: String
+    date: String,
+    image: {
+        url: String,
+        filename: String
+    }
 })
 
 const Post = mongoose.model('Post', postSchema);
@@ -37,16 +45,21 @@ app.route('/newpost')
     .get(function(req, res) {
         res.render('newpost')
     })
-    .post((req, res) => {
+    .post(upload.single('image'), (req, res) => {
         const d = new Date();
         const year = d.getFullYear();
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         const month = months[d.getMonth()];
         const date = `${month} ${year}`
+        const file = req.file;
         const newPost = new Post({
             title: req.body.postTitle,
             body: req.body.postBody,
-            date: date
+            date: date,
+            image: {
+                url: file.path,
+                filename: file.filename
+            }
         });
         newPost.save();
         console.log('saved the following post:' + newPost);
@@ -86,7 +99,8 @@ app.route('/blog/posts/:id')
                 } else {
                     res.render("post", {
                         title: foundPost.title,
-                        body: foundPost.body
+                        body: foundPost.body,
+                        url: foundPost.image.url
                     });
                 }
             }
