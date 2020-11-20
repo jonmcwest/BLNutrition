@@ -120,6 +120,12 @@ body {
 .u-margin-right-small {
   margin-right: 1.5rem !important; }
 
+.u-hide {
+  visibility: hidden; }
+
+.u-show {
+  visibility: visible; }
+
 .btn:link, .btn:visited {
   display: inline-block;
   font-size: 1.2rem;
@@ -687,6 +693,49 @@ body {
       transition: all 0.2s; }
       .section-compose__form-button:hover {
         background-color: #4095c6; }
+
+.post-edit__btn {
+  cursor: pointer; }
+  .post-edit__btn:hover {
+    color: #F28C69; }
+
+.login-form {
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative; }
+  .login-form label {
+    visibility: hidden;
+    transition: 1s; }
+  .login-form input {
+    width: 90%;
+    height: 4rem;
+    border: none;
+    background-color: rgba(173, 229, 153, 0.2);
+    border-radius: 10px;
+    text-align: center; }
+    .login-form input:focus {
+      background-color: rgba(173, 229, 153, 0.8);
+      outline: none;
+      transition: 1s;
+      box-shadow: 0 0 1rem #ade599; }
+
+.section-dashboard {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .section-dashboard .dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+    height: 100%; }
 
 .section-header {
   position: relative; }

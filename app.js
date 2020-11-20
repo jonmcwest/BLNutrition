@@ -5,8 +5,8 @@ const app = express();
 const mongo = require('mongodb');
 const mongoose = require('mongoose');
 const multer = require('multer');
-const { storage } = require('./cloudinary/index')
-const upload = multer({ storage })
+const { storage } = require('./cloudinary/index');
+const upload = multer({ storage });
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -63,14 +63,16 @@ app.route('/newpost')
         });
         newPost.save();
         console.log('saved the following post:' + newPost);
-        res.redirect('/dashboard');
+        res.redirect('/login');
     });
 
-app.route('/dashboard')
+app.route('/login')
     .get((req, res) => {
-        res.render('dashboard');
+        res.render('login');
     })
-
+    .post((req, res) => {
+        res.render('login');
+    })
 
 app.route('/dynablog')
     .get((req, res) => {
