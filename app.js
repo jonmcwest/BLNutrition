@@ -59,6 +59,20 @@ app.route('/dynablog')
         });
     })
 
+app.route('/blog/posts/:id')
+    .get((req,res) => {
+        const id = req.params.id;
+        Post.findOne({_id: id}, function(err, foundPost){
+            if (!err){
+              if (!foundPost){
+                res.send('no post exists');
+              } else {        
+                res.render("post", {title: foundPost.title, body: foundPost.body});
+              }
+            }
+          });
+    });
+
 //end of database functions
 
 app.get('/', function(req, res){

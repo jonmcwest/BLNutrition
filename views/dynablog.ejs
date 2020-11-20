@@ -35,15 +35,13 @@
         <%for (const post of posts) {%>
                 <div class="blog--wide__card u-margin-bottom-medium">
                     <div class="blog--wide__card-container">
-                        <img class="blog--wide__card-container-img" src="/img/2x/katsu@2x.png">
+                        <img class="blog--wide__card-container-img" src="https://picsum.photos/200/?random=">
                     </div>
                     <div class="blog--wide__card-content">
                         <h3 class="u-margin-bottom-small">
                             <%=post.title%></h3>
-                        <p class="text">That's right, I nailed spicy peanut satay sauce and I want to eat it every day for the rest of my life. It was nutty, garlicky, and had a perfect spicy umami kick.
-
-                            I served it mixed into stir fried broccoli, red pepper and mushrooms with a side of white rice, and it was...</p>
-                        <a href="posts/peanutsatay" class="blog--wide__card-readmore">Read More</a>
+                        <p class="text"><%=post.body.slice(0,300) + '...'%></p>
+                        <a href="/blog/posts/<%=post._id%>" class="blog--wide__card-readmore">Read More</a>
                     </div>
                 </div>
 
