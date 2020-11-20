@@ -1,0 +1,57 @@
+<%- include("partials/header"); -%> 
+
+
+<header class="header header--blog">
+            
+    <div class="header__content">
+        <div class="row u-center-text u-margin-top-big">
+           
+            
+                <h1 class="header-primary">BL Blog</span>.</h1>
+                <h2 class="header-secondary">Recipes, thoughts & nutritional tips.</h2>
+                <a class="social-link" href="https://www.facebook.com/bethaddeynutrition"><i class="fab fa-facebook fa-5x u-margin-right-small"></i></a>
+                <a class="social-link" href="https://www.instagram.com/bethsgonevegan/?hl=en"><i class="fab fa-instagram fa-5x u-margin-left-small"></i></a>
+        </div>
+    </div>
+
+
+    <svg width="0" height="0">
+        <defs>
+          <clipPath id="headerCurve" clipPathUnits="objectBoundingBox">
+            <path d="M 0,1
+            L 0,0
+            L 1,0
+            L 1,.85
+            C .65 .95, .35 .95, 0 .85
+            Z" />
+          </clipPath>
+        </defs>
+      </svg>
+
+</header>
+
+<section class="section-blog">
+
+        <%for (const post of posts) {%>
+                <div class="blog--wide__card u-margin-bottom-medium">
+                    <div class="blog--wide__card-container">
+                        <img class="blog--wide__card-container-img" src="/img/2x/katsu@2x.png">
+                    </div>
+                    <div class="blog--wide__card-content">
+                        <h3 class="u-margin-bottom-small">
+                            <%=post.title%></h3>
+                        <p class="text">That's right, I nailed spicy peanut satay sauce and I want to eat it every day for the rest of my life. It was nutty, garlicky, and had a perfect spicy umami kick.
+
+                            I served it mixed into stir fried broccoli, red pepper and mushrooms with a side of white rice, and it was...</p>
+                        <a href="posts/peanutsatay" class="blog--wide__card-readmore">Read More</a>
+                    </div>
+                </div>
+
+        <% } %>
+
+</section>
+
+
+
+
+<%- include("partials/footer"); -%>

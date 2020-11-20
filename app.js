@@ -29,9 +29,6 @@ const postSchema = new mongoose.Schema({
 
 const Post = mongoose.model('Post', postSchema);
 
-
-
-
 app.route('/newpost')
     .get(function(req,res){
         res.render('newpost')
@@ -46,6 +43,20 @@ app.route('/newpost')
 app.route('/dashboard')
     .get((req,res) => {
         res.render('dashboard');
+    })
+
+
+app.route('/dynablog')
+    .get((req,res) => {
+        const posts = Post.find({}, (err, posts) => {
+            if (err) {
+                console.log(err);
+            } else {
+                if (posts) {
+                    res.render("dynablog", {posts:posts});
+                }
+            }
+        });
     })
 
 //end of database functions
