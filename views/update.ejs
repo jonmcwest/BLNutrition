@@ -1,0 +1,40 @@
+<%- include("partials/headnoindex"); -%> 
+
+
+<section class="section-compose">
+
+
+    <div class="section-compose__form">
+
+        <h1>Edit Post</h1>
+        <p>Please make sure to re-upload the image or it will be lost</p>
+
+        <img src=<%= post.image.url %> style="width: 10rem" alt="">
+
+        <form action="/edit/<%= post.id %>" method="POST" enctype="multipart/form-data">
+        
+            <div class="form-group u-margin-bottom-small">
+                <label for="postTitle">Title</label>
+                <input id="postTitle" class="form-control" type="text" name="postTitle" value="<%= post.title %>">
+                <input type="file" name="image">
+            </div>
+
+            <div class="form-group">
+                <label for="postBody">Post</label>
+                <textarea id="postBody" name="postBody" class="form-control" cols="40" rows="5"><%= post.body %></textarea>
+            </div>
+            <button type="submit" class="section-compose__form-button">Publish</button>
+        </form>
+        
+
+    </div>
+
+
+
+</section>
+
+
+
+
+
+<%- include("partials/footer"); -%>

@@ -7,10 +7,9 @@
         <div class="row u-center-text u-margin-top-big">
            
             
-                <h1 class="header-primary">BL Blog</span>.</h1>
-                <h2 class="header-secondary">Recipes, thoughts & nutritional tips.</h2>
-                <a class="social-link" href="https://www.facebook.com/bethaddeynutrition"><i class="fab fa-facebook fa-5x u-margin-right-small"></i></a>
-                <a class="social-link" href="https://www.instagram.com/bethsgonevegan/?hl=en"><i class="fab fa-instagram fa-5x u-margin-left-small"></i></a>
+                <h1 class="header-primary">Blog Admin View</h1>
+                <h2 class="header-secondary">Edit & Delete posts</h2>
+            
         </div>
     </div>
 
@@ -42,6 +41,21 @@
                             <%=post.title%></h3>
                         <p class="text"><%=post.body.slice(0,300) + '...'%></p>
                         <a href="/blog/posts/<%=post._id%>" class="blog--wide__card-readmore">Read More</a>
+                        <div class="post-edit u-margin-top-small">
+  
+                          
+                            <form action="/delete" method="post">
+                                <div class="item">
+                                    <button name="checkbox" value="<%=post._id%>" onclick="this.form.submit()">Delete Post</button>
+                                </div>
+                                <input type="hidden" name="title" value="<%= post.title %>"></input>
+                              </form>
+
+                              
+                            <a class="btn btn-primary" href="/edit/<%=post._id%>">EDIT</a>
+
+
+                        </div>
                     </div>
                 </div>
 
