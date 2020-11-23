@@ -6,6 +6,20 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+
+    &__post {
+
+        p {
+            text-align: justify;
+    width: 66.666%;
+    font-size: 1.3rem;
+    line-height: 3rem;
+
+    @include respond(tab-port) {
+        width: 100%;
+    }  
+        }
+    }
 }
 
 .post {

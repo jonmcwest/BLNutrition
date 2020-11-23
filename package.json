@@ -25,10 +25,12 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cloudinary": "^1.23.0",
+    "dompurify": "^2.2.2",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "jsdom": "^16.4.0",
     "live-server": "^1.2.1",
     "marked": "^1.2.5",
     "mongodb": "^3.6.3",

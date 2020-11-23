@@ -16,7 +16,9 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const marked = require('marked');
 const slugify = require('slugify');
-
+const createDomPurifier = require('dompurify');
+const { JSDOM } = require('jsdom');
+const dompurify = createDomPurifier( new JSDOM().window);
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -81,7 +83,7 @@ passport.deserializeUser(function (id, done) {
 
 const postSchema = new mongoose.Schema({
     title: String,
-    body: String,
+    markdown: String,
     date: String,
     image: {
         url: String,
@@ -91,6 +93,10 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },
+    sanitizedHtml: {
+        type: String,
+        required: true
     }
 })
 
@@ -153,7 +159,7 @@ app.route('/newpost')
         const file = req.file;
         const newPost = new Post({
             title: req.body.postTitle,
-            body: req.body.postBody,
+            markdown: req.body.postBody,
             date: date,
             image: {
                 url: file.path,
@@ -185,7 +191,7 @@ app.route('/edit/:id')
         const file = req.file;
         const editPost = {
             title: req.body.postTitle,
-            body: req.body.postBody,
+            markdown: req.body.postBody,
             image: {
                 url: file.path,
                 filename: file.filename
@@ -298,7 +304,7 @@ app.route('/blog/posts/:slug')
                 } else {
                     res.render("post", {
                         title: foundPost.title,
-                        body: foundPost.body,
+                        sanitizedHtml: foundPost.sanitizedHtml,
                         url: foundPost.image.url,
                     });
                 }
