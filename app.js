@@ -19,6 +19,7 @@ const slugify = require('slugify');
 const createDomPurifier = require('dompurify');
 const { JSDOM } = require('jsdom');
 const dompurify = createDomPurifier( new JSDOM().window);
+const ejs = require('ejs');
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -83,7 +84,10 @@ passport.deserializeUser(function (id, done) {
 
 const postSchema = new mongoose.Schema({
     title: String,
-    markdown: String,
+    markdown: {
+        type: String,
+        required: true
+    },
     date: String,
     image: {
         url: String,

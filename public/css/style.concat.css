@@ -241,7 +241,8 @@ body {
     width: 60%;
     position: absolute;
     right: 1rem;
-    top: 0; }
+    top: 0;
+    overflow: hidden; }
     @media only screen and (max-width: 75em) {
       .blog--wide__card-content {
         width: 40%; } }

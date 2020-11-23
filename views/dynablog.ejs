@@ -30,7 +30,7 @@
 
 </header>
 
-<section class="section-blog section-blog__post">
+<section class="section-blog">
 
         <%for (const post of posts) {%>
                 <div class="blog--wide__card u-margin-bottom-medium">
@@ -40,9 +40,12 @@
                     <div class="blog--wide__card-content">
                         <h3 class="u-margin-bottom-small">
                             <%=post.title%></h3>
-                        <p class="text"><%=post.sanitizedHtml%></p>
-                        <a href="/blog/posts/<%=post.slug%>" class="blog--wide__card-readmore">Read More</a>
+
+                        
+                        <p class="text"><%=post.markdown%></p>
+
                     </div>
+                    <a href="/blog/posts/<%=post.slug%>" class="blog--wide__card-readmore">Read More</a>
                 </div>
 
         <% } %>
