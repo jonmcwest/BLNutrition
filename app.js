@@ -14,7 +14,8 @@ const upload = multer({
 const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
-const findOrCreate = require("mongoose-findorcreate");
+const marked = require('marked');
+const slugify = require('slugify');
 
 
 app.set('view engine', 'ejs');
@@ -44,7 +45,8 @@ app.use(passport.session());
 mongoose.connect('mongodb://localhost:27017/BLnutrition', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useFindAndModify: false
+        useFindAndModify: false,
+        useCreateIndex: true
     })
     .then(() => {
         console.log('Database connection open')
@@ -61,7 +63,7 @@ const UserSchema = new mongoose.Schema({
 })
 
 UserSchema.plugin(passportLocalMongoose);
-UserSchema.plugin(findOrCreate);
+
 
 const User = new mongoose.model("User", UserSchema);
 
@@ -84,8 +86,25 @@ const postSchema = new mongoose.Schema({
     image: {
         url: String,
         filename: String
+    },
+    slug: {
+        type: String,
+        required: true,
+        unique: true
     }
 })
+
+postSchema.pre('validate', function(next) {
+    if (this.title) {
+      this.slug = slugify(this.title, { lower: true, strict: true })
+    }
+  
+    if (this.markdown) {
+      this.sanitizedHtml = dompurify.sanitize(marked(this.markdown))
+    }
+  
+    next()
+  })
 
 const Post = mongoose.model('Post', postSchema);
 
@@ -268,11 +287,10 @@ app.route('/dynablog')
         });
     })
 
-app.route('/blog/posts/:id')
+app.route('/blog/posts/:slug')
     .get((req, res) => {
-        const id = req.params.id;
         Post.findOne({
-            _id: id
+            slug: req.params.slug
         }, function (err, foundPost) {
             if (!err) {
                 if (!foundPost) {
@@ -281,7 +299,7 @@ app.route('/blog/posts/:id')
                     res.render("post", {
                         title: foundPost.title,
                         body: foundPost.body,
-                        url: foundPost.image.url
+                        url: foundPost.image.url,
                     });
                 }
             }

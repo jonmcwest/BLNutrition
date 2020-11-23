@@ -30,6 +30,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "live-server": "^1.2.1",
+    "marked": "^1.2.5",
     "mongodb": "^3.6.3",
     "mongoose": "^5.10.15",
     "mongoose-findorcreate": "^3.0.0",
@@ -38,6 +39,7 @@
     "nodemailer": "^6.4.13",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^6.0.1"
+    "passport-local-mongoose": "^6.0.1",
+    "slugify": "^1.4.6"
   }
 }
