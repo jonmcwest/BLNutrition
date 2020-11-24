@@ -1,4 +1,4 @@
-<%- include("partials/header"); -%> 
+<%- include("partials/headnoindex"); -%> 
 
 
 <header class="header header--blog">
@@ -33,32 +33,43 @@
 
         <%for (const post of posts) {%>
                 <div class="blog--wide__card u-margin-bottom-medium">
-                    <div class="blog--wide__card-container">
-                        <img class="blog--wide__card-container-img" src=<%=post.image.url%>>
-                    </div>
-                    <div class="blog--wide__card-content">
-                        <h3 class="u-margin-bottom-small">
-                            <%=post.title%></h3>
-                        <p class="text"><%=post.body.slice(0,300) + '...'%></p>
-                        <a href="/blog/posts/<%=post.slug%>" class="blog--wide__card-readmore">Read More</a>
-                        <div class="post-edit u-margin-top-small">
+                    <div class="post-edit u-margin-top-small">
   
                           
-                            <form action="/delete" method="post">
-                                <div class="item">
-                                    <button name="checkbox" value="<%=post._id%>" onclick="this.form.submit()">Delete Post</button>
-                                </div>
-                                <input type="hidden" name="title" value="<%= post.title %>"></input>
-                              </form>
+                        <form action="/delete" method="post">
+                            <div class="item">
+                                <button name="checkbox" value="<%=post._id%>" onclick="this.form.submit()">Delete Post</button>
+                            </div>
+                            <input type="hidden" name="title" value="<%= post.title %>"></input>
+                          </form>
 
-                              
-                            <a class="btn btn-primary" href="/edit/<%=post._id%>">EDIT</a>
+                          
+                        <a class="btn btn-primary" href="/edit/<%=post._id%>">EDIT</a>
 
 
-                        </div>
                     </div>
-                </div>
+                    <div class="blog--wide__card-container">
+                        <img class="blog--wide__card-container-img" src=<%=post.image.url%>>
+                        
+                    </div>
+                    
+                    <div class="blog--wide__card-content">
+                        
+                        <h3 class="u-margin-bottom-small header-tertiary">
+                            <%=post.title%></h3>
+                        <h3 class="u-margin-bottom-small">
+                            <%=post.date%></h3>
+                            
+                            <p class="text"><%=post.markdown%></p>
 
+                        
+
+                    </div>
+                    
+                    <a href="/blog/posts/<%=post.slug%>" class="blog--wide__card-readmore">Read More</a>
+                    
+                </div>
+                
         <% } %>
 
 </section>

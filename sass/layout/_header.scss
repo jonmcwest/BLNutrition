@@ -9,6 +9,7 @@
     position: relative;
     overflow: hidden;
 
+
     @include respond (tab-land) {
         text-align: center;
         height: 80rem;
@@ -38,6 +39,10 @@
         width: 100%;
         top: 18rem;
         padding: 0 10rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
 
         @include respond (tab-port) {
             width: 100%;

@@ -1,17 +1,24 @@
 .blog {
 
     &__card {
-        width: 100%;
-        height: 45rem;
+        width: 30vw;
+        height: 50rem;
         background-color: $color-off-white;
         border-radius: 8px;
         overflow: hidden;
         text-align: left;
+        position: relative;
+
+        @include respond(tab-port) {
+            margin-bottom: 10rem;
+            width: 60vw;
+        }
 
         &-container {
             width: 100%;
             height: 50%;
             overflow: hidden;
+
 
             &-img {
                 width: 100%;
@@ -19,15 +26,30 @@
         }
 
         &-content {
-            height: 40%;
+            height: 30%;
             margin: 2rem;
-            position: relative;
+            width: 90%;
+            position: absolute;
+
+            overflow: hidden;
+
+            &:after{
+                content: ""; // ::before and ::after both require content
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(180deg, rgba($color-off-white, 0), rgba($color-off-white, 1));
+            }
+
         }
 
         &-readmore {
             position: absolute;
-            right: 0;
-            bottom: 0;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
 
 
             &:link,
@@ -49,7 +71,7 @@
                 color: $color-white;
                 background-color: $color-primary;
                 font-weight: 400;
-                transform: translateY(-.2rem) scale(1.01);
+
                 box-shadow: 0 .3rem 1rem rgba($color: #000000, $alpha: .3);
             }
         }
@@ -60,12 +82,12 @@
 
     &__card {
         width: 90%;
-        height: 20rem;
-        background-color: $color-off-white;
+        height: 30rem;
         border-radius: 8px;
         overflow: hidden;
         text-align: left;
         position: relative;
+        margin-top: 5rem;
 
         @include respond(tab-port) {
             width: 120%;
@@ -79,11 +101,15 @@
 
         &-container {
             width: 33.333%;
+            height: 100%;
             overflow: hidden;
+            background-size: cover;
 
             @include respond(tab-land) {
                 width: 50%;
             }
+
+
 
             @include respond(phone) {
                 width: 30%;
@@ -111,7 +137,7 @@
         }
 
         &-content {
-            height: 60%;
+            height: 80%;
             margin: 2rem;
             width: 60%;
             position: absolute;
@@ -126,7 +152,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background-image: linear-gradient(180deg, rgba($color-off-white, 0), rgba($color-off-white, 1));
+                background-image: linear-gradient(180deg, rgba($color-white, 0), rgba($color-white, 1));
             }
 
 
@@ -144,6 +170,10 @@
             position: absolute;
             right: 1rem;
             bottom: 1rem;
+
+            @include respond(tab-port) {
+                right: 5rem;
+            }
 
 
             &:link,

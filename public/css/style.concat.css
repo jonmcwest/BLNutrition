@@ -147,7 +147,7 @@ body {
   box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.3); }
 
 .social-link:link, .social-link:visited {
-  display: inline-block;
+  display: inline;
   color: #F28C69;
   text-decoration: none;
   background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
@@ -199,13 +199,13 @@ body {
       box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.3); }
 
 .blog--wide__card {
-  width: 90%;
-  height: 20rem;
-  background-color: #F8F8F8;
+  width: 10rem;
+  height: 30rem;
   border-radius: 8px;
   overflow: hidden;
   text-align: left;
-  position: relative; }
+  position: relative;
+  margin-top: 5rem; }
   @media only screen and (max-width: 56.25em) {
     .blog--wide__card {
       width: 120%;
@@ -236,13 +236,21 @@ body {
         .blog--wide__card-container-img {
           width: 200%; } }
   .blog--wide__card-content {
-    height: 80%;
+    height: 60%;
     margin: 2rem;
     width: 60%;
     position: absolute;
     right: 1rem;
     top: 0;
     overflow: hidden; }
+    .blog--wide__card-content:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(180deg, rgba(255, 255, 255, 0), white); }
     @media only screen and (max-width: 75em) {
       .blog--wide__card-content {
         width: 40%; } }
@@ -251,8 +259,8 @@ body {
         width: 55%; } }
   .blog--wide__card-readmore {
     position: absolute;
-    right: 0;
-    bottom: 0; }
+    right: 1rem;
+    bottom: 1rem; }
     .blog--wide__card-readmore:link, .blog--wide__card-readmore:visited {
       display: inline-block;
       padding: .2rem 2rem;
@@ -467,7 +475,11 @@ body {
     position: absolute;
     width: 100%;
     top: 18rem;
-    padding: 0 10rem; }
+    padding: 0 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; }
     @media only screen and (max-width: 56.25em) {
       .header__content {
         width: 100%; } }
@@ -822,3 +834,6 @@ body {
   padding: 10rem 0;
   height: 100%;
   text-align: center; }
+
+.section-latest__posts {
+  display: flex; }

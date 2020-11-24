@@ -17,8 +17,11 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const marked = require('marked');
 const slugify = require('slugify');
 const createDomPurifier = require('dompurify');
-const { JSDOM } = require('jsdom');
-const dompurify = createDomPurifier( new JSDOM().window);
+
+const {
+    JSDOM
+} = require('jsdom');
+const dompurify = createDomPurifier(new JSDOM().window);
 const ejs = require('ejs');
 
 app.set('view engine', 'ejs');
@@ -32,8 +35,9 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    rolling: true,
     cookie: {
-        maxAge: 60000
+        maxAge: 120000
     }
 }));
 
@@ -45,7 +49,9 @@ app.use(passport.session());
 
 //start of database functions
 
-mongoose.connect('mongodb://localhost:27017/BLnutrition', {
+const uri = "mongodb+srv://admin-jon:" + process.env.MONGO_PASS + "@blnutrition.culvd.mongodb.net/blnutrition?retryWrites=true&w=majority";
+
+mongoose.connect(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
@@ -72,11 +78,11 @@ const User = new mongoose.model("User", UserSchema);
 
 passport.use(User.createStrategy());
 
-passport.serializeUser(function (user, done) {
+passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 
-passport.deserializeUser(function (id, done) {
+passport.deserializeUser((id, done) => {
     User.findById(id, function (err, user) {
         done(err, user);
     });
@@ -104,56 +110,61 @@ const postSchema = new mongoose.Schema({
     }
 })
 
-postSchema.pre('validate', function(next) {
+postSchema.pre('validate', (next) => {
+    console.log('!pre has fired!')
     if (this.title) {
-      this.slug = slugify(this.title, { lower: true, strict: true })
+        console.log('attempting to slugify')
+        this.slug = slugify(this.title, {
+            lower: true,
+            strict: true
+        })
     }
-  
+
     if (this.markdown) {
-      this.sanitizedHtml = dompurify.sanitize(marked(this.markdown))
+        console.log('attempting to add markdown')
+        this.sanitizedHtml = dompurify.sanitize(marked(this.markdown))
     }
-  
+
     next()
-  })
+})
 
 const Post = mongoose.model('Post', postSchema);
 
 
 
-app.route("/register")
+// app.route("/register")
 
-    .get(function (req, res) {
+//     .get((req, res) => {
 
-        res.render("register");
+//         res.render("register");
 
-    })
+//     })
 
-    .post(function (req, res) {
-        console.log('registration submitted');
-        User.register({
-            username: req.body.username
-        }, req.body.password, function (err, user) {
-            if (err) {
-                console.log(err);
-                res.redirect("/register");
-            } else {
-                passport.authenticate("local")(req, res, function () {
-                    res.redirect("/newpost");
-                });
-            }
-        })
-    });
+//     .post((req, res) => {
+//         console.log('registration submitted');
+//         User.register({
+//             username: req.body.username
+//         }, req.body.password, (err, user) => {
+//             if (err) {
+//                 console.log(err);
+//                 res.redirect("/register");
+//             } else {
+//                 passport.authenticate("local")(req, res, () => {
+//                     res.redirect("/newpost");
+//                 });
+//             }
+//         })
+//     });
 
 
 app.route('/newpost')
-    .get(function (req, res) {
+    .get( (req, res) => {
         if (req.isAuthenticated()) {
             res.render("newpost");
         } else {
             res.redirect("/login");
         }
     })
-
     .post(upload.single('image'), (req, res) => {
         const d = new Date();
         const year = d.getFullYear();
@@ -161,6 +172,13 @@ app.route('/newpost')
         const month = months[d.getMonth()];
         const date = `${month} ${year}`
         const file = req.file;
+        const slug = slugify(req.body.postTitle, {
+            lower: true,
+            strict: true
+        })
+        const sanitizedHtml = dompurify.sanitize(marked(req.body.postBody))
+      
+
         const newPost = new Post({
             title: req.body.postTitle,
             markdown: req.body.postBody,
@@ -168,7 +186,9 @@ app.route('/newpost')
             image: {
                 url: file.path,
                 filename: file.filename
-            }
+            },
+            slug: slug,
+            sanitizedHtml: sanitizedHtml
         });
         newPost.save();
         console.log('saved the following post:' + newPost);
@@ -282,7 +302,7 @@ app.post("/delete", function (req, res) {
 
 
 
-app.route('/dynablog')
+app.route('/blog')
     .get((req, res) => {
         const posts = Post.find({}, (err, posts) => {
             if (err) {
@@ -295,7 +315,7 @@ app.route('/dynablog')
                 }
             }
         });
-    })
+    });
 
 app.route('/blog/posts/:slug')
     .get((req, res) => {
@@ -327,27 +347,33 @@ app.get("/dashboard", function (req, res) {
 
 //end of database functions
 
-app.get('/', function (req, res) {
-    res.render("index");
-});
+app.route('/')
+    .get((req, res) => {
+        const posts = Post.find({}, (err, posts) => {
+            if (err) {
+                console.log(err);
+            } else {
+                if (posts) {
+                    let x = posts.length - 3; 
+                    let recentPosts = posts.slice(x, posts.length);
+                    res.render("index", {
+                        posts: recentPosts.reverse()
+                    });
+                }
+            }
+        });
+    });
+
+
+
+
 
 app.get("/about", function (req, res) {
     res.render("about");
 });
 
-app.get("/blog", function (req, res) {
-    res.render('blog');
-});
 
-app.get("/posts/peanutsatay", function (req, res) {
-    res.render('posts/peanutsatay');
-});
-app.get("/posts/findinghappiness", function (req, res) {
-    res.render('posts/findinghappiness');
-});
-app.get("/posts/gingerbreadoats", function (req, res) {
-    res.render('posts/gingerbreadoats');
-});
+
 
 
 const PORT = process.env.PORT || 3000;

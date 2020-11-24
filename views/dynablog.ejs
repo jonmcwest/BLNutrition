@@ -1,18 +1,23 @@
 <%- include("partials/header"); -%> 
 
 
-<header class="header header--blog">
+<header class="header header--blog" style="background-image: none; height: 50rem;">
             
     <div class="header__content">
-        <div class="row u-center-text u-margin-top-big">
+
            
             
                 <h1 class="header-primary">BL Blog</span>.</h1>
                 <h2 class="header-secondary">Recipes, thoughts & nutritional tips.</h2>
-                <a class="social-link" href="https://www.facebook.com/bethaddeynutrition"><i class="fab fa-facebook fa-5x u-margin-right-small"></i></a>
-                <a class="social-link" href="https://www.instagram.com/bethsgonevegan/?hl=en"><i class="fab fa-instagram fa-5x u-margin-left-small"></i></a>
-        </div>
+
+                <div>
+                    <a class="social-link" href="https://www.facebook.com/bethaddeynutrition"><i class="fab fa-facebook fa-5x"></i></a>
+                    <a class="social-link" href="https://www.instagram.com/bethsgonevegan/?hl=en"><i class="fab fa-instagram fa-5x"></i></a>
+                </div>
+
     </div>
+
+    
 
 
     <svg width="0" height="0">
@@ -30,16 +35,20 @@
 
 </header>
 
+
+
 <section class="section-blog">
 
         <%for (const post of posts) {%>
                 <div class="blog--wide__card u-margin-bottom-medium">
-                    <div class="blog--wide__card-container">
-                        <img class="blog--wide__card-container-img" src=<%=post.image.url%>>
+                    <div class="blog--wide__card-container" style="background-image: url(<%=post.image.url%>);">
+
                     </div>
                     <div class="blog--wide__card-content">
-                        <h3 class="u-margin-bottom-small">
+                        <h3 class="u-margin-bottom-small header-tertiary">
                             <%=post.title%></h3>
+                        <h3 class="u-margin-bottom-small">
+                            <%=post.date%></h3>
 
                         
                         <p class="text"><%=post.markdown%></p>

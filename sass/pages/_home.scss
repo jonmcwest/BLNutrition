@@ -88,9 +88,24 @@
     }
 }
 
-.section-latest-blog {
-    position: relative;
-    padding: 10rem 0;
-    height: 100%;
-    text-align: center;
+.section-latest {
+    &-blog {
+        position: relative;
+        padding: 10rem 0;
+        height: 100%;
+        text-align: center;
+    }
+
+    &__posts {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        @include respond(tab-port) {
+            flex-direction: column;
+        }
+    }
+
 }
+
+
