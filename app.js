@@ -162,7 +162,7 @@ app.route('/newpost')
         if (req.isAuthenticated()) {
             res.render("newpost");
         } else {
-            res.redirect("/login");
+            res.redirect("/blog");
         }
     })
     .post(upload.single('image'), (req, res) => {
@@ -330,6 +330,7 @@ app.route('/blog/posts/:slug')
                         title: foundPost.title,
                         sanitizedHtml: foundPost.sanitizedHtml,
                         url: foundPost.image.url,
+                        slug: foundPost.slug
                     });
                 }
             }
