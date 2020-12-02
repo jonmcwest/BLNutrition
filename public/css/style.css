@@ -711,7 +711,7 @@ body {
   background-size: 110%; }
 
 .section-compose {
-  height: 100vh;
+  height: 100rem;
   position: relative;
   display: flex;
   justify-content: center; }
@@ -765,7 +765,7 @@ body {
       box-shadow: 0 0 1rem #ade599; }
 
 .section-dashboard {
-  height: 100vh;
+  height: 100rem;
   position: relative;
   display: flex;
   align-items: center;
