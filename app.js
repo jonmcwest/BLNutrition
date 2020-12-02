@@ -192,7 +192,7 @@ app.route('/newpost')
         });
         newPost.save();
         console.log('saved the following post:' + newPost);
-        res.redirect('/login');
+        res.redirect('/adminblog');
     });
 
 
@@ -212,6 +212,14 @@ app.route('/edit/:id')
 app.route('/edit/:id')
     .post(upload.single('image'), (req, res) => {
 
+
+        const slug = slugify(req.body.postTitle, {
+            lower: true,
+            strict: true
+        });
+
+        const sanitizedHtml = dompurify.sanitize(marked(req.body.postBody));
+
         const file = req.file;
         const editPost = {
             title: req.body.postTitle,
@@ -219,8 +227,11 @@ app.route('/edit/:id')
             image: {
                 url: file.path,
                 filename: file.filename
-            }
+            },
+            slug: slug,
+            sanitizedHtml: sanitizedHtml
         };
+
         Post.findByIdAndUpdate(req.params.id, {
             $set: editPost
         }, (err, post) => {
