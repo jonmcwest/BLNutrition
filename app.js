@@ -366,10 +366,11 @@ app.route('/')
                 console.log(err);
             } else {
                 if (posts) {
-                    let x = posts.length - 3; 
-                    let recentPosts = posts.slice(x, posts.length);
+                    let recentPosts = posts;
+                    const postHandler = posts.length < 3 ? posts.reverse() : posts.slice(Math.max(posts.length - 3)).reverse();
+                    console.log(posts);
                     res.render("index", {
-                        posts: recentPosts.reverse()
+                        posts: postHandler
                     });
                 }
             }
