@@ -511,6 +511,10 @@ body {
     .header__content--post {
       background-color: rgba(255, 255, 255, 0.8);
       padding: 2rem 2rem 4rem 2rem; }
+      @media only screen and (max-width: 56.25em) {
+        .header__content--post {
+          margin-top: -20rem;
+          transform: scale(0.6); } }
   .header__img {
     width: 100%; }
     @media only screen and (max-width: 56.25em) {

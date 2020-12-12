@@ -1,31 +1,32 @@
-<%- include("partials/header"); -%> 
+<%- include("partials/header"); -%>
 
 
-<header class="header header--blog" style="background-image: url(<%=url%>);">            
-    <div class="header__content header__content--post">
-        <div class="row u-center-text u-margin-top-big">
-           
-            
-                <h1 class="header-primary"><%=title%></h1>
-                <h2 class="header-secondary">Recipes, thoughts & nutritional tips.</h2>
-                <a class="social-link" href="https://www.facebook.com/sharer/sharer.php?u=blnutrition.co.uk/blog/posts/<%=slug%>" target="_blank"><i class="fab fa-facebook fa-5x u-margin-right-small"></i></a>
-                
-        </div>
+<header class="header header--blog" style="background-image: url(<%=url%>);">
+  <div class="header__content header__content--post">
+    <div class="row u-center-text u-margin-top-big">
+
+
+      <h1 class="header-primary"><%=title%></h1>
+      <h2 class="header-secondary">Recipes, thoughts & nutritional tips.</h2>
+      <a class="social-link" href="https://www.facebook.com/sharer/sharer.php?u=blnutrition.co.uk/blog/posts/<%=slug%>"
+        target="_blank"><i class="fab fa-facebook fa-5x u-margin-right-small"></i></a>
+
     </div>
+  </div>
 
 
-    <svg width="0" height="0">
-        <defs>
-          <clipPath id="headerCurve" clipPathUnits="objectBoundingBox">
-            <path d="M 0,1
+  <svg width="0" height="0">
+    <defs>
+      <clipPath id="headerCurve" clipPathUnits="objectBoundingBox">
+        <path d="M 0,1
             L 0,0
             L 1,0
             L 1,.85
             C .65 .95, .35 .95, 0 .85
             Z" />
-          </clipPath>
-        </defs>
-      </svg>
+      </clipPath>
+    </defs>
+  </svg>
 
 </header>
 
@@ -33,11 +34,11 @@
 
 
 
-<p class="post__text text"><%- sanitizedHtml %></p>
+  <p class="post__text text"><%- sanitizedHtml %></p>
 
 
-<div class="post__pp u-margin-bottom-small u-margin-top-big"></div>
-<p class="text u-center-text">Beth Addey
+  <div class="post__pp u-margin-bottom-small u-margin-top-big"></div>
+  <p class="text u-center-text">Beth Addey
     Nutritionist (MSc)</p>
 
 
@@ -49,12 +50,3 @@
 
 
 <%- include("partials/footer"); -%>
-
-
-
-
-
-    
-           
-
-            
